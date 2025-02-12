@@ -6,9 +6,9 @@ int colour;
  int rValue;
  int gValue;
  int bValue;
-  int red=0;
-        int green = 0;
-        int blue = 0;
+  int red;
+  int green;
+  int blue;
  public void settings(){
    size(500, 600);
  }
@@ -30,23 +30,23 @@ int colour;
          // stroke(189, 125, 255);
          
          Die di = new Die(x,y);
-           di.colour();
+           di.colourRoll();
          di.show();
-                 
-        
-
        }
-       
       }
-      fill(0);
+      //text(red, 20, 570);
+     fill(0);
       textSize(40);
       text("The most abundant color is: ", 10, 530);
       text(total, 50, 570);
+     
+      
       total = null;
   }
   void mousePressed()
   {
       redraw();
+    
   }
   class Die //models one single dice cube
   {
@@ -63,7 +63,7 @@ int colour;
           yi=y;
           
       }
-      void colour()
+      void colourRoll()
       {
             stroke(0);
             r = new int[252];
@@ -89,6 +89,21 @@ fill(rValue,gValue,bValue);
 red+=rValue;
 green+=gValue;
 blue+=bValue;
+ 
+    if(red>blue && red > green){
+       total = "red";
+     }
+     else if (blue>red &&blue>green){
+       total = "blue";
+     }
+     else if (green>blue && green>red){
+       total = "green";
+     }
+     else{
+       total = "all";
+     }
+     print(total);
+    
     /* if(rValue>bValue && rValue>gValue){
   red +=rValue;
 }
@@ -100,24 +115,39 @@ else{
 }
      */      
         //your code here
+       // print(blue);
       }
       void show()
       {
+   text( "red" + red, 20, 500);
+     text("blue" + blue, 40, 550);
+     text("green" + green, 40, 300);
        
    
-     if(red>blue && red > green){
-       total ="red";
-     }
-     else if (blue>red&&blue>green){
-       total = "blue";
-     }
-     else if (green>blue && green>red){
-       total = "green";
-     }
-     else{
-       total = "all";
-     }
-     print(total);
+     //if(rValue>bValue && rValue > gValue){
+     //  red+=rValue;
+     //}
+     //else if (bValue>rValue &&bValue>gValue){
+     //  blue+=bValue;
+     //}
+     //else if (gValue>bValue && gValue>rValue){
+     //  green+=gValue;
+     //}
+    
+    //if(red>blue && red > green){
+    //   total = "red";
+    // }
+    // else if (blue>red &&blue>green){
+    //   total = "blue";
+    // }
+    // else if (green>blue && green>red){
+    //   total = "green";
+    // }
+    // else{
+    //   total = "all";
+    // }
+     
+     
         
         rect(xi,yi,70,70,20);
          
@@ -157,9 +187,9 @@ else{
           ellipse(xi+35,yi+52,13,13);
         }
 */
-red = 0;
-green = 0;
-blue = 0;
+  red = 0;
+      blue = 0; 
+      green = 0;
         //your code here
       }
      
